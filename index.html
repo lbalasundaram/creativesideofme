@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latha Balasundaram | Creative & Career</title>
+  <meta name="description" content="Portfolio of Latha Balasundaram — Senior Software Engineer at ConnectPay Payroll Services, and a creative artist in crochet, embroidery, cakes, mehandhi, and kolam art.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F3A8;</text></svg>">
+</head>
+<body>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <p class="hero-greeting">Hello, I'm</p>
+      <h1 class="hero-name">Latha Balasundaram</h1>
+      <p class="hero-subtitle">Senior Software Engineer &bull; Artist &bull; Creator</p>
+
+      <!-- Side Switcher -->
+      <div class="side-switcher">
+        <button class="side-btn active" data-side="creative" onclick="switchSide('creative')">
+          <span class="side-icon">&#127912;</span>
+          <span class="side-label">Creative Side of Me</span>
+        </button>
+        <button class="side-btn" data-side="career" onclick="switchSide('career')">
+          <span class="side-icon">&#128187;</span>
+          <span class="side-label">Career Side of Me</span>
+        </button>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <a href="#content-start">scroll to explore &#8595;</a>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ===== CREATIVE SIDE ===== -->
+  <!-- ============================================================ -->
+  <div id="creative-side" class="side-panel active">
+
+    <!-- Creative Nav -->
+    <nav class="nav-bar" id="content-start">
+      <div class="nav-inner">
+        <a href="#home" class="nav-brand">Creative Side of Me</a>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-category="all">All</button>
+          <button class="filter-btn" data-category="kolam">Kolam & Blog</button>
+          <button class="filter-btn" data-category="crochet">Crochet</button>
+          <button class="filter-btn" data-category="embroidery">Embroidery</button>
+          <button class="filter-btn" data-category="cakes">Cakes</button>
+          <button class="filter-btn" data-category="mehandhi">Mehandhi</button>
+        </div>
+        <div class="view-toggle">
+          <button class="view-btn active" data-view="grid" title="Grid View">&#9783;</button>
+          <button class="view-btn" data-view="timeline" title="Timeline View">&#9776;</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Stats -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-number" id="stat-total">0</div>
+        <div class="stat-label">Creations</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="stat-years">0</div>
+        <div class="stat-label">Years</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="stat-categories">0</div>
+        <div class="stat-label">Art Forms</div>
+      </div>
+    </div>
+
+    <!-- Posts Grid -->
+    <main class="content-section">
+      <div id="posts-container" class="posts-grid"></div>
+    </main>
+
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- ===== CAREER SIDE ===== -->
+  <!-- ============================================================ -->
+  <div id="career-side" class="side-panel">
+
+    <nav class="nav-bar career-nav">
+      <div class="nav-inner">
+        <a href="#home" class="nav-brand career-brand">Career Side of Me</a>
+        <div class="career-nav-links">
+          <a href="#career-about" class="career-link">About</a>
+          <a href="#career-experience" class="career-link">Experience</a>
+          <a href="#career-skills" class="career-link">Skills</a>
+          <a href="#career-education" class="career-link">Education</a>
+          <a href="#career-contact" class="career-link">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="career-container">
+
+      <!-- About -->
+      <section class="career-section" id="career-about">
+        <div class="career-about-grid">
+          <div class="career-about-text">
+            <h2 class="career-section-title">About Me</h2>
+            <p class="career-about-lead">Energetic Software Developer with over a decade of experience specializing in the development of robust web applications and visually engaging dashboards.</p>
+            <p class="career-about-body">A deep thinker known for creative problem-solving abilities. I design backend systems while crafting user-friendly interfaces, committed to continuous learning and staying current with technological advances.</p>
+            <div class="career-current-role">
+              <div class="current-badge">CURRENT ROLE</div>
+              <h3 class="current-title">Senior Software Engineer</h3>
+              <p class="current-company">ConnectPay Payroll Services</p>
+              <p class="current-desc">Building and optimizing enterprise payroll API systems, performance engineering, and full-stack development with C#/.NET, Angular, and Azure.</p>
+            </div>
+          </div>
+          <div class="career-about-card">
+            <div class="about-card-inner">
+              <div class="about-card-name">Latha Balasundaram</div>
+              <div class="about-card-title">Senior Software Engineer</div>
+              <div class="about-card-company">ConnectPay Payroll Services</div>
+              <div class="about-card-divider"></div>
+              <div class="about-card-stats">
+                <div class="about-stat">
+                  <span class="about-stat-num">17+</span>
+                  <span class="about-stat-label">Years Experience</span>
+                </div>
+                <div class="about-stat">
+                  <span class="about-stat-num">8+</span>
+                  <span class="about-stat-label">Companies</span>
+                </div>
+                <div class="about-stat">
+                  <span class="about-stat-num">2</span>
+                  <span class="about-stat-label">Certifications</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience Timeline -->
+      <section class="career-section" id="career-experience">
+        <h2 class="career-section-title">Professional Experience</h2>
+        <div class="timeline">
+
+          <div class="timeline-item current">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2020 &mdash; Present</div>
+              <h3 class="timeline-role">Senior Software Engineer</h3>
+              <p class="timeline-company">ConnectPay Payroll Services</p>
+              <ul class="timeline-details">
+                <li>Building and optimizing enterprise payroll API endpoints using C#/.NET and Angular</li>
+                <li>Performance engineering &mdash; achieving 65% speed improvements on critical endpoints</li>
+                <li>Batch data loading optimizations reducing SQL connections by 43%</li>
+                <li>Full-stack development with Azure cloud infrastructure</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2020 &mdash; Present</div>
+              <h3 class="timeline-role">Revenue Manager &amp; Billing Manager</h3>
+              <p class="timeline-company">Previous Role (Teams of 4 &amp; 7)</p>
+              <ul class="timeline-details">
+                <li>Led Azure Single Sign-On implementation for enterprise authentication</li>
+                <li>Improved front-end UI component performance</li>
+                <li>Implemented third-party SOAP/REST API integrations</li>
+                <li>Collaborated with business leads on project estimates and mentored team members</li>
+                <li>Explored emerging technologies for performance improvements</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2017 &mdash; 2020</div>
+              <h3 class="timeline-role">Senior Software Engineer</h3>
+              <p class="timeline-company">Softrax (Team of 5)</p>
+              <ul class="timeline-details">
+                <li><strong>AppSuite Project:</strong> Developed interactive, high-performance UI components using Kendo UI &mdash; editable grids, tree views, and charts</li>
+                <li>Ported application to Azure cloud as multi-tenant SaaS</li>
+                <li>Maintained AngularJS production systems</li>
+                <li><strong>Executive Dashboard:</strong> Designed and developed dashboard in Angular, migrated to Azure</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2016 &mdash; 2017</div>
+              <h3 class="timeline-role">Software Engineer</h3>
+              <p class="timeline-company">Steward Health / Telogis (Team of 3)</p>
+              <ul class="timeline-details">
+                <li>Prototyped vehicle monitoring module with route scheduling</li>
+                <li>Developed web pages using DHTML, PHP, and JavaScript</li>
+                <li>Implemented vehicle allocation logic and performed testing/release management</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2014 &mdash; 2016</div>
+              <h3 class="timeline-role">Software Engineer</h3>
+              <p class="timeline-company">Granite Telecommunications (Team of 6)</p>
+              <ul class="timeline-details">
+                <li>Redesigned and developed internal web applications for order management</li>
+                <li>Built customer inventory and vendor management systems</li>
+                <li>Integrated multiple REST APIs</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2007 &mdash; 2009</div>
+              <h3 class="timeline-role">Software Engineer</h3>
+              <p class="timeline-company">American Express &mdash; MYCA International</p>
+              <ul class="timeline-details">
+                <li>Developed international website redesign project</li>
+                <li>Built Account Services and Card Benefits pages using DHTML, CSS, JavaScript, AJAX</li>
+                <li>Gathered requirements and created technical specifications</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">Earlier Career</div>
+              <h3 class="timeline-role">Software Developer / Project Engineer</h3>
+              <p class="timeline-company">Tata Consultancy Services &bull; Aerospace Systems Pvt. Ltd.</p>
+              <ul class="timeline-details">
+                <li>Developed Transport Management Application (TMA) using DHTML, CSS, JavaScript</li>
+                <li>Created vehicle allocation logic in Java/PHP</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section class="career-section" id="career-skills">
+        <h2 class="career-section-title">Skills &amp; Technologies</h2>
+        <div class="skills-grid">
+
+          <div class="skill-category">
+            <h3 class="skill-cat-title">Back End</h3>
+            <div class="skill-tags">
+              <span class="skill-tag primary">C# / .NET</span>
+              <span class="skill-tag primary">ASP.NET Core</span>
+              <span class="skill-tag primary">OData</span>
+              <span class="skill-tag primary">REST APIs</span>
+              <span class="skill-tag">SOAP APIs</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">PHP</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="skill-cat-title">Front End</h3>
+            <div class="skill-tags">
+              <span class="skill-tag primary">Angular</span>
+              <span class="skill-tag primary">TypeScript</span>
+              <span class="skill-tag primary">CSS / SCSS</span>
+              <span class="skill-tag">Angular Material</span>
+              <span class="skill-tag">Kendo UI</span>
+              <span class="skill-tag">AngularJS</span>
+              <span class="skill-tag">jQuery</span>
+              <span class="skill-tag">Bootstrap</span>
+              <span class="skill-tag">DHTML</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">AJAX</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="skill-cat-title">Cloud &amp; DevOps</h3>
+            <div class="skill-tags">
+              <span class="skill-tag primary">Azure</span>
+              <span class="skill-tag primary">Azure AD / SSO</span>
+              <span class="skill-tag">CI/CD Pipelines</span>
+              <span class="skill-tag">Multi-tenant SaaS</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="skill-cat-title">Database &amp; Tools</h3>
+            <div class="skill-tags">
+              <span class="skill-tag primary">SQL Server</span>
+              <span class="skill-tag">Stored Procedures</span>
+              <span class="skill-tag">Telerik Reporting</span>
+              <span class="skill-tag">Performance Tuning</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="skill-cat-title">Soft Skills</h3>
+            <div class="skill-tags">
+              <span class="skill-tag soft">Communication</span>
+              <span class="skill-tag soft">Adaptability</span>
+              <span class="skill-tag soft">Teamwork</span>
+              <span class="skill-tag soft">Problem Solving</span>
+              <span class="skill-tag soft">Creativity</span>
+              <span class="skill-tag soft">Mentoring</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Education & Certs -->
+      <section class="career-section" id="career-education">
+        <h2 class="career-section-title">Education &amp; Certifications</h2>
+        <div class="edu-grid">
+
+          <div class="edu-card">
+            <div class="edu-icon">&#127891;</div>
+            <h3 class="edu-degree">Master of Engineering</h3>
+            <p class="edu-field">Software Engineering</p>
+            <p class="edu-school">Anna University, India</p>
+            <p class="edu-year">2006</p>
+          </div>
+
+          <div class="edu-card">
+            <div class="edu-icon">&#127891;</div>
+            <h3 class="edu-degree">Bachelor of Engineering</h3>
+            <p class="edu-field">Computer Science</p>
+            <p class="edu-school">Bharathiar University, India</p>
+            <p class="edu-year">2004</p>
+          </div>
+
+          <div class="edu-card cert">
+            <div class="edu-icon">&#128220;</div>
+            <h3 class="edu-degree">ISTQB Certified Tester</h3>
+            <p class="edu-field">Foundation Level (CTFL)</p>
+          </div>
+
+          <div class="edu-card cert">
+            <div class="edu-icon">&#128220;</div>
+            <h3 class="edu-degree">Sun Certified Java Programmer</h3>
+            <p class="edu-field">SCJP 5.0</p>
+          </div>
+
+        </div>
+
+        <div class="achievement-banner">
+          <span class="achievement-icon">&#127942;</span>
+          <span>Scored <strong>100% in Mathematics</strong> in both 10th and 12th grade Board Examinations &bull; School Second Rank</span>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="career-section" id="career-contact">
+        <h2 class="career-section-title">Get in Touch</h2>
+        <div class="contact-grid">
+          <a href="https://www.linkedin.com/in/latha-balasundaram-69316911/" target="_blank" class="contact-card">
+            <div class="contact-icon">in</div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-detail">Connect with me</div>
+          </a>
+          <a href="https://github.com/lathabalasundaram" target="_blank" class="contact-card">
+            <div class="contact-icon">&lt;/&gt;</div>
+            <div class="contact-label">GitHub</div>
+            <div class="contact-detail">View my code</div>
+          </a>
+          <a href="https://drive.google.com/file/d/1AiPJObtPHWEe0dwwm6o5BHvBvbKh4D16/view" target="_blank" class="contact-card">
+            <div class="contact-icon">&#128196;</div>
+            <div class="contact-label">Resume (PDF)</div>
+            <div class="contact-detail">Download</div>
+          </a>
+          <a href="https://lathabalasundaram.my.canva.site/" target="_blank" class="contact-card">
+            <div class="contact-icon">&#127760;</div>
+            <div class="contact-label">Portfolio</div>
+            <div class="contact-detail">Canva Portfolio</div>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" aria-label="Previous">&#8249;</button>
+    <img src="" alt="Lightbox Image">
+    <button class="lightbox-nav lightbox-next" aria-label="Next">&#8250;</button>
+    <div class="lightbox-caption"></div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-brand">Latha Balasundaram</div>
+    <div class="footer-links">
+      <a href="https://findmycrochet.wordpress.com/" target="_blank">Crochet World</a>
+      <a href="https://myembroiderywork.wordpress.com/" target="_blank">Embroidery Gallery</a>
+      <a href="https://cakesbylatha.blogspot.com/" target="_blank">Cake Gallery</a>
+      <a href="https://mymehandhigallery.blogspot.com/" target="_blank">Mehandhi Gallery</a>
+      <a href="https://readmybloghere0.wordpress.com/" target="_blank">Thought of the Day</a>
+      <a href="https://www.linkedin.com/in/latha-balasundaram-69316911/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/lathabalasundaram" target="_blank">GitHub</a>
+    </div>
+    <p class="footer-copy">Creative &amp; Career &mdash; 2004 to Present &mdash; Latha Balasundaram</p>
+  </footer>
+
+  <!-- ===== BACK TO TOP ===== -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8593;</button>
+
+  <script src="script.js"></script>
+  <script>
+    // Helper for hero category links
+    function filterFromHero(cat) {
+      activeCategory = cat;
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.category === cat);
+      });
+      renderPosts();
+    }
+
+    // Side switcher
+    function switchSide(side) {
+      document.querySelectorAll('.side-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.side === side);
+      });
+      document.querySelectorAll('.side-panel').forEach(p => {
+        p.classList.toggle('active', p.id === side + '-side');
+      });
+      // Scroll to content
+      setTimeout(() => {
+        const el = document.getElementById('content-start') || document.querySelector('.career-nav');
+        if (side === 'career') {
+          document.querySelector('.career-nav').scrollIntoView({ behavior: 'smooth' });
+        } else {
+          document.getElementById('content-start').scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  </script>
+
+</body>
+</html>
