@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupViewToggle();
   setupLightbox();
   setupBackToTop();
-  loadMyWorkFromFolder();
+  loadAllCategoryFolders();
 });
 
 // ===== STATS =====
@@ -409,44 +409,65 @@ function setupBackToTop() {
   });
 }
 
-// ===== MY WORK FOLDER LOADER =====
-// Reads images from the "My Work/" folder on GitHub at runtime so the user can
-// drop new images into the folder and have them appear without code changes.
-const MYWORK_REPO = "lbalasundaram/creativesideofme";
-const MYWORK_BRANCH = "main";
-const MYWORK_FOLDER = "My Work";
+// ===== CATEGORY FOLDER LOADER =====
+// Each category has a matching folder in the repo. Any image dropped into the
+// folder appears under that filter on the live site — no code changes needed.
+// Optional filename convention: "YYYY-MM-DD-title.jpg" puts the image under
+// that year's divider; otherwise it groups under today.
+const REPO = "lbalasundaram/creativesideofme";
+const REPO_BRANCH = "main";
 const IMG_EXT = /\.(jpe?g|png|gif|webp|bmp|svg)$/i;
+const DATE_PREFIX = /^(\d{4}-\d{2}-\d{2})[-_]?/;
 
-async function loadMyWorkFromFolder() {
-  const apiUrl = `https://api.github.com/repos/${MYWORK_REPO}/contents/${encodeURIComponent(MYWORK_FOLDER)}?ref=${MYWORK_BRANCH}`;
+const CATEGORY_FOLDERS = {
+  kolam:      "Kolam",
+  crochet:    "Crochet",
+  embroidery: "Embroidery",
+  cakes:      "Cakes",
+  mehandhi:   "Mehandhi",
+  mywork:     "My Work"
+};
+
+async function loadCategoryFolder(category, folderName) {
+  const apiUrl = `https://api.github.com/repos/${REPO}/contents/${encodeURIComponent(folderName)}?ref=${REPO_BRANCH}`;
   try {
     const res = await fetch(apiUrl);
     if (!res.ok) {
-      if (res.status !== 404) console.warn(`My Work folder load failed: ${res.status}`);
-      return;
+      if (res.status !== 404) console.warn(`${folderName}/ load failed: ${res.status}`);
+      return [];
     }
     const items = await res.json();
-    if (!Array.isArray(items)) return;
+    if (!Array.isArray(items)) return [];
 
     const today = new Date().toISOString().slice(0, 10);
-    const newPosts = items
+    return items
       .filter(it => it.type === "file" && IMG_EXT.test(it.name))
       .sort((a, b) => a.name.localeCompare(b.name))
-      .map(it => ({
-        cat: "mywork",
-        date: today,
-        title: it.name.replace(IMG_EXT, "").replace(/[-_]+/g, " "),
-        desc: "",
-        img: it.download_url,
-        link: it.html_url
-      }));
-
-    if (newPosts.length === 0) return;
-
-    posts = posts.concat(newPosts);
-    renderStats();
-    renderPosts();
+      .map(it => {
+        const dateMatch = it.name.match(DATE_PREFIX);
+        const cleanName = it.name.replace(DATE_PREFIX, "").replace(IMG_EXT, "");
+        return {
+          cat: category,
+          date: dateMatch ? dateMatch[1] : today,
+          title: cleanName.replace(/[-_]+/g, " ") || it.name,
+          desc: "",
+          img: it.download_url,
+          link: it.html_url
+        };
+      });
   } catch (err) {
-    console.warn("My Work folder load error:", err);
+    console.warn(`${folderName}/ load error:`, err);
+    return [];
   }
+}
+
+async function loadAllCategoryFolders() {
+  const results = await Promise.all(
+    Object.entries(CATEGORY_FOLDERS).map(([cat, folder]) => loadCategoryFolder(cat, folder))
+  );
+  const newPosts = results.flat();
+  if (newPosts.length === 0) return;
+  posts = posts.concat(newPosts);
+  renderStats();
+  renderPosts();
 }
