@@ -14,6 +14,7 @@
   --color-cakes: #d4956a;
   --color-mehandhi: #6a9a6a;
   --color-kolam: #5a8ab5;
+  --color-mywork: #b8835a;
   --color-career: #2c5282;
   --color-card-bg: #ffffff;
   --color-overlay: rgba(58, 58, 58, 0.85);
@@ -263,6 +264,7 @@ body {
 .filter-btn[data-category="cakes"].active { background: var(--color-cakes); border-color: var(--color-cakes); }
 .filter-btn[data-category="mehandhi"].active { background: var(--color-mehandhi); border-color: var(--color-mehandhi); }
 .filter-btn[data-category="kolam"].active { background: var(--color-kolam); border-color: var(--color-kolam); }
+.filter-btn[data-category="mywork"].active { background: var(--color-mywork); border-color: var(--color-mywork); }
 
 .view-toggle {
   display: flex;
@@ -414,6 +416,7 @@ body {
 .badge-cakes { background: var(--color-cakes); }
 .badge-mehandhi { background: var(--color-mehandhi); }
 .badge-kolam { background: var(--color-kolam); }
+.badge-mywork { background: var(--color-mywork); }
 
 .post-card .card-body {
   padding: 1.2rem 1.4rem;

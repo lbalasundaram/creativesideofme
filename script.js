@@ -3,7 +3,7 @@
    ======================================== */
 
 // ===== ALL BLOG POSTS DATA =====
-const posts = [
+let posts = [
   // ===================== KOLAM / BLOG =====================
   { cat: "kolam", date: "2026-03-12", title: "Woman's Day", desc: "Dedicated to women's strength and grace, featuring a kolam centered on a white lotus. Flowing lines and circular patterns describe women's roles in families.", img: "https://readmybloghere0.wordpress.com/wp-content/uploads/2026/03/womens-day-kolam.jpg", link: "https://readmybloghere0.wordpress.com/2026/03/12/womans-day/" },
   { cat: "kolam", date: "2026-01-15", title: "Margazhi 2025\u201326: Sacred Mosaic of Mornings", desc: "Overview of the entire Margazhi season \u2014 thirty conversations with dawn. Lotuses, brahmamudi knots, padi kolams, Vaishnava symbols, and Nataraja\u2019s rhythm.", img: "https://readmybloghere0.wordpress.com/wp-content/uploads/2026/01/margazhi-overview.jpg", link: "https://readmybloghere0.wordpress.com/2026/01/15/margazhi-2025-26/" },
@@ -196,6 +196,7 @@ const categoryMeta = {
   cakes:      { label: "Cakes",      color: "#d4956a", icon: "\uD83C\uDF82" },
   mehandhi:   { label: "Mehandhi",   color: "#6a9a6a", icon: "\u270B" },
   kolam:      { label: "Kolam & Blog", color: "#5a8ab5", icon: "\u2728" },
+  mywork:     { label: "My Work",    color: "#b8835a", icon: "\ud83d\udcc2" },
 };
 
 // ===== STATE =====
@@ -212,6 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupViewToggle();
   setupLightbox();
   setupBackToTop();
+  loadMyWorkFromFolder();
 });
 
 // ===== STATS =====
@@ -405,4 +407,46 @@ function setupBackToTop() {
   btn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+}
+
+// ===== MY WORK FOLDER LOADER =====
+// Reads images from the "My Work/" folder on GitHub at runtime so the user can
+// drop new images into the folder and have them appear without code changes.
+const MYWORK_REPO = "lbalasundaram/creativesideofme";
+const MYWORK_BRANCH = "main";
+const MYWORK_FOLDER = "My Work";
+const IMG_EXT = /\.(jpe?g|png|gif|webp|bmp|svg)$/i;
+
+async function loadMyWorkFromFolder() {
+  const apiUrl = `https://api.github.com/repos/${MYWORK_REPO}/contents/${encodeURIComponent(MYWORK_FOLDER)}?ref=${MYWORK_BRANCH}`;
+  try {
+    const res = await fetch(apiUrl);
+    if (!res.ok) {
+      if (res.status !== 404) console.warn(`My Work folder load failed: ${res.status}`);
+      return;
+    }
+    const items = await res.json();
+    if (!Array.isArray(items)) return;
+
+    const today = new Date().toISOString().slice(0, 10);
+    const newPosts = items
+      .filter(it => it.type === "file" && IMG_EXT.test(it.name))
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map(it => ({
+        cat: "mywork",
+        date: today,
+        title: it.name.replace(IMG_EXT, "").replace(/[-_]+/g, " "),
+        desc: "",
+        img: it.download_url,
+        link: it.html_url
+      }));
+
+    if (newPosts.length === 0) return;
+
+    posts = posts.concat(newPosts);
+    renderStats();
+    renderPosts();
+  } catch (err) {
+    console.warn("My Work folder load error:", err);
+  }
 }
